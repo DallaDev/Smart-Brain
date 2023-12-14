@@ -107,7 +107,7 @@ class App extends Component {
   onButtonSubmit = () => {
     this.setState({ imageUrl: this.state.input });
     
-    fetch('http://localhost:3000/clarifai-endpoint', { // Updated backend endpoint URL
+    fetch('https://face-detect-backend.onrender.com/clarifai-endpoint', { // Updated backend endpoint URL
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ imageUrl: this.state.input }), // Pass the image URL to backend
@@ -117,7 +117,7 @@ class App extends Component {
       .then(result => {
         if(result) {
           console.log('Clarifai Response from Backend:', result);
-          fetch('http://localhost:3000/image', {
+          fetch('https://face-detect-backend.onrender.com/image', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json'},
             body: JSON.stringify({
